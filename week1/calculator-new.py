@@ -3,7 +3,7 @@
 import sys
 
 def cal_tax(income):
-    tax = 0 
+    tax = 0
     earn = 0
     insurance = income * 16.5 / 100
     b = income - insurance -3500
@@ -23,7 +23,7 @@ def cal_tax(income):
         tax = b * 0.35 - 5505
     else:
         tax = b * 0.45 - 13505
-    earn = income - tax - insurance 
+    earn = income - tax - insurance
     return earn
 
 
@@ -33,35 +33,38 @@ def print_tax(dict):
 
 if __name__ == '__main__':
 
-    c = {}
-    
     try:
+        c = {}
+
         for arg in sys.argv[1:]:
             b = arg.split(':')
             c[int(b[0])] = int(b[1])
+
+
+        d = {}
+        tax = []
+        earn = []
+        k = list(c.keys())
+        v = list(c.values())
+
+        #print(k)
+        #print(v)
+        for income in v:
+            earn.append(cal_tax(income))
+
+        #print(earn)
+
+        len = len(k)
+
+        out = {}
+
+        for index in range(len):
+            if index < len:
+                out[k[index]] = earn[index]
+        #print(out)
+
+        print_tax(out)
+
     except:
         print('Parameter Error')
 
-    d = {}
-    tax = []
-    earn = []
-    k = list(c.keys())
-    v = list(c.values())
-
-    #print(k)
-    #print(v)
-    for income in v:
-        earn.append(cal_tax(income))
-
-    #print(earn)  
-
-    len = len(k)
-
-    out = {}
-
-    for index in range(len):
-        if index < len:
-            out[k[index]] = earn[index]
-    #print(out)
-
-    print_tax(out)
