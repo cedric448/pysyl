@@ -28,8 +28,8 @@ def cal_tax(income):
 
 
 def print_tax(dict):
-    for k, v in dict.items():
-        print(k, ':{:.2f}'.format(v))
+    for k,v in dict.items():
+        print('{}:{:.2f}'.format(k, v))
 
 if __name__ == '__main__':
 
